@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PCM Cyber Security</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050807;
+    color:#eafff0;
+    min-height:100vh;
+}
+
+button,input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* LOGIN */
+
+#loginScreen{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:
+        radial-gradient(circle at center,#12351f 0%,#07120c 35%,#020403 100%);
+}
+
+.loginBox{
+    width:100%;
+    max-width:430px;
+    padding:35px 25px;
+    border:1px solid #1f8f4d;
+    border-radius:20px;
+    background:rgba(2,8,5,.94);
+    box-shadow:0 0 35px rgba(0,255,100,.18);
+    text-align:center;
+}
+
+.logo{
+    font-size:48px;
+    margin-bottom:10px;
+}
+
+.loginBox h1{
+    color:#46ff87;
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.loginBox p{
+    color:#8aa996;
+    margin-bottom:25px;
+}
+
+.field{
+    margin-bottom:15px;
+}
+
+.field input{
+    width:100%;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #285f3c;
+    background:#08110c;
+    color:white;
+    outline:none;
+}
+
+.field input:focus{
+    border-color:#42ff85;
+    box-shadow:0 0 10px rgba(66,255,133,.2);
+}
+
+.btn{
+    width:100%;
+    padding:15px;
+    border:0;
+    border-radius:10px;
+    background:#19b957;
+    color:#001b09;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+.btn:hover{
+    background:#42ff85;
+}
+
+.btn.secondary{
+    margin-top:10px;
+    background:#102219;
+    color:#64ff9a;
+    border:1px solid #276d40;
+}
+
+.loginMessage{
+    margin-top:15px;
+    min-height:20px;
+    color:#ffcc66;
+    font-size:14px;
+}
+
+/* APP */
+
+#app{
+    min-height:100vh;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(3,8,5,.96);
+    border-bottom:1px solid #163b24;
+    backdrop-filter:blur(10px);
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 20px;
+}
+
+.brand{
+    color:#45ff86;
+    font-weight:bold;
+    font-size:19px;
+}
+
+.navButtons{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.navButtons button{
+    background:#0b1710;
+    border:1px solid #214c30;
+    color:#b9ffd0;
+    padding:9px 12px;
+    border-radius:8px;
+}
+
+.navButtons button:hover{
+    border-color:#45ff86;
+    color:#45ff86;
+}
+
+main{
+    max-width:1200px;
+    margin:auto;
+    padding:25px 20px 60px;
+}
+
+/* HERO */
+
+.hero{
+    min-height:430px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    border:1px solid #1d6a38;
+    border-radius:22px;
+    padding:35px;
+    margin-bottom:25px;
+    background:
+        linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.82)),
+        radial-gradient(circle at center,#174b29,#030604 70%);
+    box-shadow:0 0 40px rgba(0,255,100,.1);
+}
+
+.hero h2{
+    font-size:48px;
+    color:#45ff86;
+    margin-bottom:15px;
+    text-shadow:0 0 20px rgba(69,255,134,.3);
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    color:#a9c6b3;
+    line-height:1.7;
+}
+
+/* CARDS */
+
+.sectionTitle{
+    font-size:28px;
+    margin:30px 0 18px;
+    color:#45ff86;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:16px;
+}
+
+.card{
+    background:#08100b;
+    border:1px solid #183d25;
+    border-radius:16px;
+    padding:20px;
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+    border-color:#39e977;
+    box-shadow:0 10px 25px rgba(0,255,100,.08);
+}
+
+.card h3{
+    color:#63ff9b;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#91aa99;
+    line-height:1.5;
+    font-size:14px;
+}
+
+.courseButton{
+    margin-top:15px;
+    width:100%;
+    padding:11px;
+    border-radius:8px;
+    border:1px solid #2d8149;
+    background:#0b1c11;
+    color:#6dff9e;
+}
+
+/* DASHBOARD */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:12px;
+}
+
+.stat{
+    background:#08100b;
+    border:1px solid #183d25;
+    border-radius:14px;
+    padding:20px;
+    text-align:center;
+}
+
+.stat strong{
+    display:block;
+    font-size:28px;
+    color:#45ff86;
+    margin-bottom:5px;
+}
+
+.stat span{
+    color:#8ea697;
+}
+
+/* COURSE AREA */
+
+.lesson{
+    padding:16px;
+    border:1px solid #1c492c;
+    border-radius:12px;
+    margin-bottom:10px;
+    background:#071009;
+}
+
+.lesson strong{
+    color:#d9ffe5;
+}
+
+.lesson button{
+    float:right;
+    padding:7px 10px;
+    border-radius:7px;
+    border:1px solid #2a7d45;
+    background:#0d2114;
+    color:#64ff98;
+}
+
+/* PROFILE */
+
+.profile{
+    max-width:600px;
+    background:#08100b;
+    border:1px solid #183d25;
+    border-radius:16px;
+    padding:25px;
+}
+
+.profile p{
+    margin:10px 0;
+    color:#a5bcae;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:30px;
+    border-top:1px solid #173522;
+    color:#617568;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .nav{
+        align-items:flex-start;
+        gap:12px;
+        flex-direction:column;
+    }
+
+    .navButtons{
+        width:100%;
+    }
+
+    .navButtons button{
+        flex:1;
+    }
+
+    .hero{
+        min-height:360px;
+        padding:25px 15px;
+    }
+
+    .hero h2{
+        font-size:34px;
+    }
+
+    main{
+        padding:15px 12px 40px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+
+<section id="loginScreen">
+
+<div class="loginBox">
+
+<div class="logo">☠️</div>
+
+<h1>PCM CYBER SECURITY</h1>
+
+<p>
+Acesso à Academia Cyber Security
+</p>
+
+<div class="field">
+<input
+id="username"
+type="text"
+placeholder="Nome de usuário"
+autocomplete="username">
+</div>
+
+<div class="field">
+<input
+id="accessCode"
+type="text"
+placeholder="Código de acesso"
+autocomplete="one-time-code">
+</div>
+
+<button class="btn" onclick="login()">
+ENTRAR NA ACADEMIA
+</button>
+
+<button class="btn secondary" onclick="requestCode()">
+SOLICITAR CÓDIGO DE ACESSO
+</button>
+
+<div id="loginMessage" class="loginMessage"></div>
+
+</div>
+
+</section>
+
+
+<!-- APLICAÇÃO -->
+
+<section id="app" class="hidden">
+
+<header>
+
+<div class="nav">
+
+<div class="brand">
+☠️ PCM CYBER SECURITY
+</div>
+
+<div class="navButtons">
+
+<button onclick="showPage('home')">
+Início
+</button>
+
+<button onclick="showPage('courses')">
+Cursos
+</button>
+
+<button onclick="showPage('dashboard')">
+Progresso
+</button>
+
+<button onclick="showPage('profile')">
+Minha Conta
+</button>
+
+<button onclick="logout()">
+Sair
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+
+<main>
+
+<!-- HOME -->
+
+<section id="homePage">
+
+<div class="hero">
+
+<div>
+
+<h2>CYBER SECURITY</h2>
+
+<p>
+Entre na academia e desenvolva seus conhecimentos
+em segurança digital, redes, Linux, segurança web,
+criptografia e pentest ético.
+</p>
+
+</div>
+
+</div>
+
+<h2 class="sectionTitle">
+🎓 Trilhas de aprendizagem
+</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>🌐 Redes</h3>
+<p>
+Fundamentos de redes, protocolos, comunicação
+e arquitetura.
+</p>
+</div>
+
+<div class="card">
+<h3>🐧 Linux</h3>
+<p>
+Comandos, administração e fundamentos de sistemas Linux.
+</p>
+</div>
+
+<div class="card">
+<h3>🛡️ Segurança Web</h3>
+<p>
+Conceitos de segurança de aplicações e proteção web.
+</p>
+</div>
+
+<div class="card">
+<h3>🔐 Criptografia</h3>
+<p>
+Conceitos de criptografia, hashes, chaves e proteção
+de informações.
+</p>
+</div>
+
+<div class="card">
+<h3>🎯 Pentest Ético</h3>
+<p>
+Metodologias de testes de segurança realizados
+com autorização.
+</p>
+</div>
+
+<div class="card">
+<h3>🧠 Cyber Security</h3>
+<p>
+Fundamentos gerais para formação em segurança
+cibernética.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CURSOS -->
+
+<section id="coursesPage" class="hidden">
+
+<h2 class="sectionTitle">
+📚 Cursos
+</h2>
+
+<div class="grid" id="courseGrid"></div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section id="dashboardPage" class="hidden">
+
+<h2 class="sectionTitle">
+📊 Meu Progresso
+</h2>
+
+<div class="stats">
+
+<div class="stat">
+<strong id="xp">0</strong>
+<span>XP</span>
+</div>
+
+<div class="stat">
+<strong id="completed">0</strong>
+<span>Aulas concluídas</span>
+</div>
+
+<div class="stat">
+<strong id="level">1</strong>
+<span>Nível</span>
+</div>
+
+<div class="stat">
+<strong id="percent">0%</strong>
+<span>Progresso</span>
+</div>
+
+</div>
+
+<h2 class="sectionTitle">
+🏆 Conquistas
+</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>🔓 Primeiro acesso</h3>
+<p>
+Acesso à Academia realizado.
+</p>
+</div>
+
+<div class="card">
+<h3>📚 Estudante</h3>
+<p>
+Conclua suas primeiras aulas.
+</p>
+</div>
+
+<div class="card">
+<h3>⚡ Evolução</h3>
+<p>
+Continue avançando pelas fases.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PERFIL -->
+
+<section id="profilePage" class="hidden">
+
+<h2 class="sectionTitle">
+👤 Minha Conta
+</h2>
+
+<div class="profile">
+
+<p>
+<strong>Usuário:</strong>
+<span id="profileUsername"></span>
+</p>
+
+<p>
+<strong>Status:</strong>
+<span>Autorizado</span>
+</p>
+
+<p>
+<strong>Academia:</strong>
+PCM Cyber Security
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ÁREA DA AULA -->
+
+<section id="lessonPage" class="hidden">
+
+<button
+class="courseButton"
+onclick="showPage('courses')">
+← Voltar para cursos
+</button>
+
+<h2 class="sectionTitle" id="lessonTitle">
+Curso
+</h2>
+
+<div id="lessonList"></div>
+
+</section>
+
+</main>
+
+<footer>
+PCM Cyber Security © 2026
+</footer>
+
+</section>
+
+
+<script>
+
+const courses = [
+
+{
+name:"Introdução à Cyber Security",
+icon:"🛡️",
+lessons:[
+"Fundamentos da Segurança Digital",
+"Tipos de ameaças",
+"Princípios de segurança",
+"Identificação de riscos",
+"Boas práticas de proteção"
+]
+},
+
+{
+name:"Redes",
+icon:"🌐",
+lessons:[
+"Fundamentos de redes",
+"Endereçamento IP",
+"Protocolos",
+"DNS e HTTP",
+"Arquitetura de redes"
+]
+},
+
+{
+name:"Linux",
+icon:"🐧",
+lessons:[
+"Introdução ao Linux",
+"Terminal",
+"Sistema de arquivos",
+"Permissões",
+"Administração básica"
+]
+},
+
+{
+name:"Segurança Web",
+icon:"🌐",
+lessons:[
+"Conceitos de aplicações web",
+"Autenticação",
+"Controle de acesso",
+"Proteção de dados",
+"Segurança de aplicações"
+]
+},
+
+{
+name:"Criptografia",
+icon:"🔐",
+lessons:[
+"Introdução à criptografia",
+"Hashes",
+"Criptografia simétrica",
+"Criptografia assimétrica",
+"Gestão de chaves"
+]
+},
+
+{
+name:"Pentest Ético",
+icon:"🎯",
+lessons:[
+"Conceito de pentest",
+"Autorização e escopo",
+"Reconhecimento autorizado",
+"Análise de segurança",
+"Relatório de vulnerabilidades"
+]
+}
+
+];
+
+
+let username="";
+let progress={};
+
+function save(){
+
+localStorage.setItem(
+"pcm_progress",
+JSON.stringify(progress)
+);
+
+localStorage.setItem(
+"pcm_username",
+username
+);
+
+}
+
+
+function load(){
+
+username=localStorage.getItem("pcm_username") || "";
+
+try{
+
+progress=JSON.parse(
+localStorage.getItem("pcm_progress") || "{}"
+);
+
+}catch(e){
+
+progress={};
+
+}
+
+}
+
+
+function login(){
+
+const user=
+document.getElementById("username").value.trim();
+
+const code=
+document.getElementById("accessCode").value.trim();
+
+const msg=
+document.getElementById("loginMessage");
+
+
+if(!user){
+
+msg.textContent="Digite seu nome de usuário.";
+
+return;
+
+}
+
+
+if(!code){
+
+msg.textContent="Digite o código de acesso.";
+
+return;
+
+}
+
+
+/*
+O código real será conectado ao servidor
+na próxima etapa.
+*/
+
+if(code === "PCM2026"){
+
+username=user;
+
+save();
+
+document.getElementById("loginScreen")
+.classList.add("hidden");
+
+document.getElementById("app")
+.classList.remove("hidden");
+
+document.getElementById("profileUsername")
+.textContent=username;
+
+renderCourses();
+
+updateStats();
+
+}else{
+
+msg.textContent=
+"Código inválido. O sistema de código por e-mail será conectado na próxima etapa.";
+
+}
+
+}
+
+
+function requestCode(){
+
+const user=
+document.getElementById("username").value.trim();
+
+const msg=
+document.getElementById("loginMessage");
+
+
+if(!user){
+
+msg.textContent=
+"Digite primeiro seu nome de usuário.";
+
+return;
+
+}
+
+
+msg.textContent=
+"Solicitação registrada. O envio real por e-mail será conectado ao sistema de acesso.";
+
+}
+
+
+function logout(){
+
+localStorage.removeItem("pcm_username");
+
+document.getElementById("app")
+.classList.add("hidden");
+
+document.getElementById("loginScreen")
+.classList.remove("hidden");
+
+}
+
+
+function showPage(page){
+
+document
+.querySelectorAll("main > section")
+.forEach(section=>{
+section.classList.add("hidden");
+});
+
+const target=
+document.getElementById(page+"Page");
+
+if(target){
+target.classList.remove("hidden");
+}
+
+updateStats();
+
+}
+
+
+function renderCourses(){
+
+const grid=
+document.getElementById("courseGrid");
+
+grid.innerHTML="";
+
+
+courses.forEach((course,index)=>{
+
+const card=document.createElement("div");
+
+card.className="card";
+
+card.innerHTML=`
+
+<h3>
+${course.icon} ${course.name}
+</h3>
+
+<p>
+5 aulas disponíveis nesta etapa.
+</p>
+
+<button
+class="courseButton"
+onclick="openCourse(${index})">
+ABRIR CURSO
+</button>
+
+`;
+
+grid.appendChild(card);
+
+});
+
+}
+
+
+function openCourse(index){
+
+const course=courses[index];
+
+document
+.querySelectorAll("main > section")
+.forEach(section=>{
+section.classList.add("hidden");
+});
+
+document
+.getElementById("lessonPage")
+.classList.remove("hidden");
+
+document
+.getElementById("lessonTitle")
+.textContent=
+course.icon+" "+course.name;
+
+const list=
+document.getElementById("lessonList");
+
+list.innerHTML="";
+
+
+course.lessons.forEach((lesson,i)=>{
+
+const key=index+"-"+i;
+
+const done=progress[key];
+
+const div=document.createElement("div");
+
+div.className="lesson";
+
+div.innerHTML=`
+
+<strong>
+Aula ${i+1} — ${lesson}
+</strong>
+
+<button onclick="completeLesson('${key}')">
+${done ? "✓ Concluída" : "Concluir"}
+</button>
+
+`;
+
+list.appendChild(div);
+
+});
+
+}
+
+
+function completeLesson(key){
+
+progress[key]=true;
+
+save();
+
+updateStats();
+
+const parts=key.split("-");
+
+openCourse(Number(parts[0]));
+
+}
+
+
+function updateStats(){
+
+const total=courses.length*5;
+
+const completed=
+Object.values(progress)
+.filter(Boolean).length;
+
+const percent=
+Math.round((completed/total)*100);
+
+const xp=
+completed*100;
+
+const level=
+Math.floor(xp/500)+1;
+
+document.getElementById("xp")
+.textContent=xp;
+
+document.getElementById("completed")
+.textContent=completed;
+
+document.getElementById("percent")
+.textContent=percent+"%";
+
+document.getElementById("level")
+.textContent=level;
+
+}
+
+
+load();
+
+</script>
+
+</body>
+</html>
